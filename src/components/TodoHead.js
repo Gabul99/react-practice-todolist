@@ -33,26 +33,7 @@ function TodoHead() {
   let year = today.getFullYear()
   let month = today.getMonth()
   let date = today.getDate()
-  let day = today.getDay()
-
-  function dayToText(day) {
-    switch (day) {
-      case 0:
-        return "일요일"
-      case 1:
-        return "월요일"
-      case 2:
-        return "화요일"
-      case 3:
-        return "수요일"
-      case 4:
-        return "목요일"
-      case 5:
-        return "금요일"
-      case 6:
-        return "토요일"
-    }
-  }
+  let day = today.toLocaleDateString('ko-KR', {weekday: "long"})
 
   const todos = useTodoState()
 
@@ -62,7 +43,7 @@ function TodoHead() {
           {year}년 {month + 1}월 {date}일
         </h1>
         <div className="day">
-          {dayToText(day)}
+          {day}
         </div>
         <div className="tasks-left">
           할 일 {todos.filter(todo => !todo.done).length}개 남음

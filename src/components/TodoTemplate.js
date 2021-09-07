@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import TodoHead from "./TodoHead";
+import TodoList from "./TodoList";
 
 const TodoTemplateBlock = styled.div`
   width: 512px;
@@ -22,6 +23,7 @@ function TodoTemplate({children}) {
   return (
       <TodoTemplateBlock>
         <TodoHead/>
+        <TodoList/>
       </TodoTemplateBlock>
   )
 }

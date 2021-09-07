@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useTodoState } from "../TodoContext";
 
 const TodoHeadBlock = styled.div`
   padding-top: 48px;
@@ -53,6 +54,8 @@ function TodoHead() {
     }
   }
 
+  const todos = useTodoState()
+
   return (
       <TodoHeadBlock>
         <h1>
@@ -62,7 +65,7 @@ function TodoHead() {
           {dayToText(day)}
         </div>
         <div className="tasks-left">
-          할 일 2개 남음
+          할 일 {todos.filter(todo => !todo.done).length}개 남음
         </div>
       </TodoHeadBlock>
   )

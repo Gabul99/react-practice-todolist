@@ -2,6 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import styled, {createGlobalStyle} from "styled-components";
 import TodoTemplate from "./components/TodoTemplate";
+import TodoHead from "./components/TodoHead";
+import TodoList from "./components/TodoList";
+import TodoCreate from "./components/TodoCreate";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -13,7 +16,11 @@ function App() {
   return (
       <>
         <GlobalStyle/>
-        <TodoTemplate>뚜두뚜두</TodoTemplate>
+        <TodoTemplate>
+          <TodoHead/>
+          <TodoList/>
+          <TodoCreate/>
+        </TodoTemplate>
       </>
   );
 }

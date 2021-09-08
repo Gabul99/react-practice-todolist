@@ -1,5 +1,5 @@
 import React from "react";
-import styled, {css} from "styled-components";
+import styled from "styled-components";
 import { MdArrowBack, MdArrowForward } from "react-icons/all";
 import { useTodoDate } from "../TodoContext";
 
@@ -39,7 +39,7 @@ const TodoTemplateButton = styled.button`
   justify-content: center;
   font-size: 60px;
   position: absolute;
-  left: 0px;
+  left: ${props => props.isForward ? "100%" : "0px"};
   top: 10%;
   transform: translate(-50%, 50%);
   color: white;
@@ -49,12 +49,6 @@ const TodoTemplateButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  ${props =>
-          props.isForward &&
-          css`
-            left: 100%;
-          `}
 `
 
 function TodoTemplate({children}) {

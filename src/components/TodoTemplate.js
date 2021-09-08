@@ -1,6 +1,7 @@
 import React from "react";
 import styled, {css} from "styled-components";
 import { MdArrowBack, MdArrowForward } from "react-icons/all";
+import { useTodoDate } from "../TodoContext";
 
 const TodoTemplateBlock = styled.div`
   width: 512px;
@@ -57,14 +58,37 @@ const TodoTemplateButton = styled.button`
 `
 
 function TodoTemplate({children}) {
+  const [date, setDate] = useTodoDate()
+  const onDateForward = () => {
+    const today = date
+    const tomorrow = new Date(today.year, today.month - 1, today.date)
+    tomorrow.setDate(tomorrow.getDate() + 1)
+    setDate({
+      year: tomorrow.getFullYear(),
+      month: tomorrow.getMonth() + 1,
+      date: tomorrow.getDate()
+    })
+  }
+
+  const onDateBack = () => {
+    const today = date
+    const tomorrow = new Date(today.year, today.month - 1, today.date)
+    tomorrow.setDate(tomorrow.getDate() - 1)
+    setDate({
+      year: tomorrow.getFullYear(),
+      month: tomorrow.getMonth() + 1,
+      date: tomorrow.getDate()
+    })
+  }
+
   return (
       <div>
         <TodoTemplateBlock>
-          <TodoTemplateButton>
+          <TodoTemplateButton onClick={onDateBack}>
             <MdArrowBack/>
           </TodoTemplateButton>
           {children}
-          <TodoTemplateButton isForward={true}>
+          <TodoTemplateButton isForward={true} onClick={onDateForward}>
             <MdArrowForward/>
           </TodoTemplateButton>
         </TodoTemplateBlock>
